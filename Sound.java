@@ -277,6 +277,12 @@ public class Sound {
     // - replace the current value with the new value
     // - refresh!
     public void fadeIn(double seconds) {
+        int numToChange = (int)Math.round(this.getSamplingRate()) * (int)seconds; //number values to take out of my array
+        //check that numToChange is less than sound. 
+        double factor = 1.0/ numToChange;
+        for (int i =0; i < numToChange; i++) {
+            myData.set(i, (int)(myData.get(i)*(factor*i)));
+        }
 
    
     }
@@ -284,6 +290,12 @@ public class Sound {
 
     // Fade out over a duration in seconds
     public void fadeOut(double seconds) {
+        int numToChange = (int)Math.round(this.getSamplingRate()) * (int)seconds; //number values to take out of my array
+        //check that numToChange is less than sound. 
+        double factor = 1.0/ numToChange;
+        for (int i = numToChange -1; i >=0; i --){
+            myData.set(i, (int)(myData.get(i)*(factor*i)));
+        }
 
     }
 
