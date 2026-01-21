@@ -226,20 +226,29 @@ public class Sound {
      * reverse the sound
      */
     public void reverse() {
-
-
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+        for (int i = myData.size() -1; i >= 0; i--) {
+            temp.add(myData.get(i));
+        }
+        myData = temp;
+        refresh();
     }
 
     // this throws out half the data
     public void doublePitch() {
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+        for (int i =0; i < myData.size()/2; i++) {
+            temp.add(myData.get(i*2));
+        }
+        myData = temp;
+        refresh();
 
     }
-
-
   
     //complete this method
     public void amplify (double amt) {
-
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+        
     }
 
     /*
