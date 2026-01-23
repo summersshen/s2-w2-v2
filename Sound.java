@@ -308,15 +308,19 @@ public class Sound {
      * A square wave alternates between -max and +max.
      */
     public void setSquare(int hertz) {
+        refresh();
         int maxAmplitude = 25000;
         // based on hertz: cycles per second
         // cycle - is one complete wave 
         // sampleRate() -- getSamplingRate() - samples per second
         // You need to calculate the samplesPerCycle 
         int samplesPerCycle = (int)Math.round(this.getSamplingRate()/hertz); //samples / sec
-        int sec = 1;
-        
-        for(int i =0; i < myData.size(); i += samplesPerCycle/2) {
+        int sec = 10;
+        int cycles = sec * hertz;
+        for(int i =0; i < cycles; i ++) {
+            for (int x =0; x< samplesPerCycle; x++) {
+                if ()
+            }
 
         }
     }
