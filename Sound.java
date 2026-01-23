@@ -277,12 +277,14 @@ public class Sound {
     // - replace the current value with the new value
     // - refresh!
     public void fadeIn(double seconds) {
-        int numToChange = (int)Math.round(this.getSamplingRate()) * (int)seconds; //number values to take out of my array
+        int numToChange = (int)Math.round(this.getSamplingRate() * seconds); //number values to take out of my array
+        System.out.println(numToChange);
         //check that numToChange is less than sound. 
         double factor = 1.0/ numToChange;
         for (int i =0; i < numToChange; i++) {
             myData.set(i, (int)(myData.get(i)*(factor*i)));
         }
+        refresh();
 
    
     }
@@ -290,12 +292,13 @@ public class Sound {
 
     // Fade out over a duration in seconds
     public void fadeOut(double seconds) {
-        int numToChange = (int)Math.round(this.getSamplingRate()) * (int)seconds; //number values to take out of my array
+        int numToChange = (int)Math.round(this.getSamplingRate() * seconds); //number values to take out of my array
         //check that numToChange is less than sound. 
-        double factor = 1.0/ numToChange;
-        for (int i = numToChange -1; i >=0; i --){
-            myData.set(i, (int)(myData.get(i)*(factor*i)));
+        double factor = numToChange/1.0;
+        for (int i = numToChange-1; i >=0; i--){
+            myData.set(i, (int)(myData.get(i)*((factor)*i)));
         }
+        refresh();
 
     }
 
@@ -310,7 +313,12 @@ public class Sound {
         // cycle - is one complete wave 
         // sampleRate() -- getSamplingRate() - samples per second
         // You need to calculate the samplesPerCycle 
+        int samplesPerCycle = (int)Math.round(this.getSamplingRate()/hertz); //samples / sec
+        int sec = 1;
+        
+        for(int i =0; i < myData.size(); i += samplesPerCycle/2) {
 
+        }
     }
 
 
